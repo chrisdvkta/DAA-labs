@@ -6,10 +6,32 @@ arr = [16 ,14, 10 ,8 ,7 ,9 ,3 ,2 ,4 ,1]
 
 
 
-def HeapSort(A, n, value): 
-    n = n +1 
-    A[n] = value
-    for i in range (0,1): 
-        print(i)
-        
-HeapSort(arr,0,5)
+class MaxHeap: 
+    def __init__(self): 
+        self.heap = []
+    
+    def insert(self,value): 
+        self.heap.append(value); 
+        self.heapify_up(len(self.heap)-1)
+    
+    def heapify_up(self,index): 
+        parent = (index-1)//2
+        print("current parent index is " ,parent)
+        if (self.heap[parent]<self.heap[index]):
+            self.heap[parent], self.heap[index] = self.heap[index], self.heap[parent]
+            index = parent
+            parent = (index -1)//2
+            print("nnew parent index becomes", parent)
+
+    def display(self): 
+        print(self.heap);
+
+max_heap = MaxHeap();
+max_heap.insert(10);
+max_heap.insert(20);
+max_heap.insert(5);
+max_heap.insert(40);
+max_heap.insert(90);
+
+max_heap.display();
+
